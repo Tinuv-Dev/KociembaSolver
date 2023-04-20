@@ -8,5 +8,4 @@
 import Foundation
 import KociembaSolver
 
-print("here")
-let solution = ApplyKociembaAlgorithm(<#UnsafeMutablePointer<CChar>?#>, <#Int32#>, <#Int#>, <#Int32#>, <#UnsafePointer<CChar>?#>) 
+
