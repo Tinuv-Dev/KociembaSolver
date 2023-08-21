@@ -1,23 +1,34 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.9
 
 import PackageDescription
 
-let package = Package(
+let KociembaSolver = Package(
     name: "KociembaSolver",
     platforms: [
-        .macOS(.v12),
+        .macOS(.v13),
+        .iOS(.v16)
     ],
     products: [
-        .library(name: "KociembaSolver", targets: ["KociembaSolver"]),
-        .executable(name: "CLI", targets: ["CLI"])
+        .library(
+            name: "KociembaSolverCpp",
+            targets: ["KociembaSolverCpp"]),
+        .library(
+            name: "KociembaSolver",
+            targets: ["KociembaSolver"]),
+        .executable(
+            name: "KociembaCLI",
+            targets: ["KociembaCLI"])
     ],
-    dependencies: [],
     targets: [
-        .target(name: "KociembaSolver"),
+        .target(
+            name: "KociembaSolverCpp"),
+        .target(
+            name: "KociembaSolver",
+            dependencies: ["KociembaSolverCpp"],
+            swiftSettings: [.interoperabilityMode(.Cxx)]),
         .executableTarget(
-            name: "CLI",
+            name: "KociembaCLI",
             dependencies: ["KociembaSolver"],
-            swiftSettings: [.unsafeFlags(["-enable-experimental-cxx-interop"])]
-        )
+            swiftSettings: [.interoperabilityMode(.Cxx)])
     ]
 )
