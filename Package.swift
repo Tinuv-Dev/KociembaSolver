@@ -6,7 +6,8 @@ let KociembaSolver = Package(
     name: "KociembaSolver",
     platforms: [
         .macOS(.v13),
-        .iOS(.v16)
+        .iOS(.v16),
+        .tvOS(.v17)
     ],
     products: [
         .library(
